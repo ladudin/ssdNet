@@ -165,7 +165,7 @@ def train():
         images, targets = next(batch_iterator)
 
         if args.cuda:
-            images = Variable(images.cuda())
+            images = images.cuda()
             targets = [Variable(ann.cuda(), volatile=True) for ann in targets]
         else:
             images = Variable(images)

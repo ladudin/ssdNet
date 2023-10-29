@@ -9,6 +9,7 @@ import cv2
 import numpy as np
 
 COCO_ROOT = osp.join(HOME, 'data/coco/')
+print(f"{HOME=}")
 IMAGES = 'images'
 ANNOTATIONS = 'annotations'
 COCO_API = 'PythonAPI'
@@ -44,6 +45,7 @@ class COCOAnnotationTransform(object):
     Initilized with a dictionary lookup of classnames to indexes
     """
     def __init__(self):
+        print(f"{COCO_ROOT=}")
         self.label_map = get_label_map(osp.join(COCO_ROOT, 'coco_labels.txt'))
 
     def __call__(self, target, width, height):
