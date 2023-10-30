@@ -28,7 +28,6 @@ class Detect(Function):
         conf_thresh = 0.01
         variance = cfg['variance']
 
-        print("detection forward")
         """
         Args:
             loc_data: (tensor) Loc preds from loc layers
@@ -40,7 +39,6 @@ class Detect(Function):
         """
         num = loc_data.size(0)  # batch size
         num_priors = prior_data.size(0)
-        print("Okay let's see num_classes", num_classes)
         output = torch.zeros(num, num_classes, top_k, 5)
         conf_preds = conf_data.view(num, num_priors,
                                     num_classes).transpose(2, 1)

@@ -26,7 +26,6 @@ class SSD(nn.Module):
 
     def __init__(self, phase, size, base, extras, head, num_classes):
         super(SSD, self).__init__()
-        print(num_classes, "AAAAAAAAAAAAAAAAAAAAAAAAaaaaaa")
         self.phase = phase
         self.num_classes = num_classes
         self.cfg = (coco, voc)[num_classes == 21]
@@ -97,7 +96,6 @@ class SSD(nn.Module):
         loc = torch.cat([o.view(o.size(0), -1) for o in loc], 1)
         conf = torch.cat([o.view(o.size(0), -1) for o in conf], 1)
         if self.phase == "test":
-            print("AAAAAAAAAAAAaaa", self.num_classes)
             output = self.detect.apply(self.num_classes,
                 loc.view(loc.size(0), -1, 4),                   # loc preds
                 self.softmax(conf.view(conf.size(0), -1,
